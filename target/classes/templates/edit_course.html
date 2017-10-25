@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit A Course</title>
+    <link rel="stylesheet" th:href="@{/dashboard.css}" />
+    <link rel="stylesheet" th:href="@{/bootstrap.css}" />
+
+    <script src="/jquery.min.js"></script>
+    <script src="/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="col-md-7 form-horizontal" role="form">
+
+<form method="post" th:action="@{/course/save}" th:object="${course}">
+    <input type="hidden" th:field="*{id}" />
+    <input type="text" th:field="*{name}" class="form-control" />
+    <input type="text" th:field="*{experience}" class="form-control" />
+    <input type="text" th:field="*{qualification}" class="form-control"/>
+    <input type="submit" class="btn btn-success" />
+</form>
+</div>
+
+</body>
+</html>

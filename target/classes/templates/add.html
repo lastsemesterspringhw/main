@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add</title>
+    <link rel="stylesheet" th:href="@{/bootstrap.css}" />
+</head>
+<script>
+    function  confirmDelete() {
+        return confirm("Do you really want to delete the record?");
+    }
+</script>
+<body>
+
+<form th:action="@{/controller/add}" th:object="${game}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <input type="text" placeholder="name" th:field="*{name}"/>
+    <input type="text" placeholder="description" th:field="*{description}" />
+    <input type="submit" value="submit" />
+</form>
+
+<br /> <br/><hr />
+
+<table class="table table-striped">
+    <thead><tr><td>Id</td><td>Name</td><td>Description</td><td colspan="2">Actions</td></tr></thead>
+    <tbody>
+        <tr th:each="game: ${games}">
+            <td th:text="${game.id}"></td>
+            <td th:text="${game.name}"></td>
+            <td th:text="${game.description}"></td>
+            <td><a th:href="@{'/controller/edit/'+ ${game.id}}">Edit</a></td>
+            <td><a th:href="@{'/controller/delete/' + ${game.id}}" onclick="return confirmDelete()">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit A Section</title>
+    <link rel="stylesheet" th:href="@{/dashboard.css}" />
+    <link rel="stylesheet" th:href="@{/bootstrap.css}" />
+
+    <script src="/jquery.min.js"></script>
+    <script src="/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="col-md-7 form-horizontal" role="form">
+<form method="post" th:action="@{/section/save}" th:object="${section}">
+    <input type="hidden" th:field="*{id}" />
+    <input type="text" class="form-control" th:field="*{name}" />
+    <input type="submit" class="btn tbn-success" value="Edit" />
+</form>
+</div>
+
+</body>
+</html>

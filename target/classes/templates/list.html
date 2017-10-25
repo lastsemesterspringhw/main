@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>List</title>
+    <link rel="stylesheet" th:href="@{/bootstrap.css}" />
+
+</head>
+<body>
+
+<h1>Games List</h1>
+<p>Here you can see the list of games.</p>
+
+<table border="1px">
+    <thead><tr><td>Id</td><td>Name</td><td>Description</td></tr></thead>
+    <tbody>
+        <tr th:each="game: ${games}">
+            <td th:text="${game.id}"></td>
+            <td th:text="${game.name}"></td>
+            <td th:text="${game.description}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

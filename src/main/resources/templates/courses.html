@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Courses</title>
+    <link rel="stylesheet" th:href="@{/dashboard.css}" />
+    <link rel="stylesheet" th:href="@{/bootstrap.css}" />
+
+    <script src="/jquery.min.js"></script>
+    <script src="/bootstrap.min.js"></script>
+
+    <style>
+        .fin {
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<script>
+    function  confirmDelete() {
+        return confirm("Do you really want to delete the record?");
+    }
+
+</script>
+
+<body>
+
+
+<!-- Modal finished -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search..." />
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Courses</h1>
+
+
+
+            <h2 class="sub-header">You can manage courses here!</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <td>Name</td>
+                        <td>Experience</td>
+                        <td>Qualification</td>
+                        <td colspan="2">Actions</td>
+                    </thead>
+
+                    <tbody>
+                        <tr th:each="course: ${courses}">
+                            <span id="nispan" th:text="${course.id}" style="display: none;"></span>
+                            <td th:text="${course.name}"></td>
+                            <td th:text="${course.experience}"></td>
+                            <td th:text="${course.qualification}"></td>
+                            <td ><a id="editref" th:href="@{'/course/edit/'+${course.id}}"  >Edit</a></td>
+                            <td ><a th:href="@{'/course/delete/'+${course.id}}" onclick="return confirmDelete()">
+                                Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-2 col-md-2"></div>
+    </div>
+</div>
+
+</body>
+</html>

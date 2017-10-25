@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sign In </title>
+    <link rel="stylesheet" th:href="@{/signin.css}" />
+    <link rel="stylesheet" th:href="@{/bootstrap.css}" />
+</head>
+<body>
+
+<div class="container">
+
+    <form class="form-signin" th:action="@{/admin/signin}" method="post" th:object="${administrator}">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label class="sr-only">Email address</label>
+        <input type="text" th:field="*{name}"  class="form-control" placeholder="Email address"  />
+        <label  class="sr-only">Password</label>
+        <input type="password" class="form-control" placeholder="Password" th:field="*{password}" />
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+
+</div>
+
+
+</body>
+</html>
