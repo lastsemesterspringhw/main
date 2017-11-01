@@ -1,9 +1,8 @@
 package com.example.finish.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Course {
@@ -14,6 +13,14 @@ public class Course {
     private String name;
     private String qualification;
     private String experience;
+
+    @ManyToMany
+    @JoinTable(name = "admins_courses", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "admin_id"))
+    private Set<Administrator> administrators;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 
     public int getId() {
         return id;
@@ -47,5 +54,19 @@ public class Course {
         this.experience = experience;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
 
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Set<Administrator> getAdministrators() {
+        return administrators;
+    }
+
+    public void setAdministrators(Set<Administrator> administrators) {
+        this.administrators = administrators;
+    }
 }

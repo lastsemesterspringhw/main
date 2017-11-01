@@ -1,6 +1,7 @@
 package com.example.finish.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Administrator {
@@ -12,6 +13,13 @@ public class Administrator {
     private long id;
     private String name;
     private String password;
+
+    @ManyToMany(targetEntity = Course.class, mappedBy = "administrators")
+    private Set<Course> courses;
+
+    @ManyToMany
+    @JoinTable(name = "admins_students", joinColumns = @JoinColumn(name = "admin_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
+    private Set<Student> students;
 
     public long getId() {
         return id;
@@ -37,4 +45,19 @@ public class Administrator {
         this.password = password;
     }
 
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 }

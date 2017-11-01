@@ -1,9 +1,6 @@
 package com.example.finish.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Exam {
@@ -13,6 +10,21 @@ public class Exam {
     private int course_id;
     private int student_id;
     private int mark;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
 
     public int getId() {
         return id;

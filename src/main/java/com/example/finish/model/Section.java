@@ -1,9 +1,6 @@
 package com.example.finish.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Section {
@@ -12,6 +9,18 @@ public class Section {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
 
     public int getId() {
         return id;
