@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}"/>
+    <title>List of Students</title>
+    <style>
+        .custom {
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container">
+        <div class="card mx-auto custom">
+            <a class="btn btn-success" th:href="@{/student/add}"> Add New Student </a>
+            <div class="card-body">
+                <h2 class="card-title"> List of the Students </h2>
+                <table class="table table-bordered table-inverse table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th> Student ID </th>
+                            <th> First Name </th>
+                            <th> Last Name </th>
+                            <th> Gender </th>
+                            <th> Weight </th>
+                            <th> Birth Date </th>
+                            <th colspan="2"> Actions </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each = "student: ${students}">
+                            <td th:text = "${student.id}"></td>
+                            <td th:text = "${student.firstName}"></td>
+                            <td th:text = "${student.lastName}"></td>
+                            <td th:text = "${student.gender}"></td>
+                            <td th:text = "${student.weight}"></td>
+                            <td th:text = "${student.birthDate}"></td>
+                            <td><a class="btn btn-primary" th:href="@{/student/edit/{id}(id = ${student.id})}"> Edit </a></td>
+                            <td><a class="btn btn-danger" th:href="@{'/student/delete/'+${student.id}}" onclick="return confirm('Do you really want to delete ?')"> Delete </a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+<script th:src = "@{/jquery.min.js}"></script>
+<script th:src = "@{/bootstrap.min.js}"></script>
+</body>
+</html>

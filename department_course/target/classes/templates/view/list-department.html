@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of Departments </title>
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}"/>
+</head>
+<body class="bg-light">
+
+    <div class="container">
+        <div class="card mx-auto">
+            <a class="btn btn-success" th:href="@{/department/add}"> Add New Department </a>
+            <div class="card-body">
+                <h2 class="card-title"> List of the Departments</h2>
+                <table class="table table-bordered table-inverse table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th> Department ID </th>
+                            <th> Department Name </th>
+                            <th> Actions </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each = "department : ${departments}">
+                            <td th:text = "${department.id}"></td>
+                            <td th:text = "${department.name}"></td>
+                            <td><a class="btn btn-primary" th:href="@{/department/edit/{id}(id = ${department.id})}"> Edit </a> </td>
+                            <td><a class="btn btn-danger" th:href="@{'/department/delete/'+${department.id}}" onclick="return confirm('Do you really want to delete ?')"> Delete </a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<script th:src = "@{/jquery.min.js}"></script>
+<script th:src = "@{/bootstrap.min.js}"></script>
+</body>
+</html>
