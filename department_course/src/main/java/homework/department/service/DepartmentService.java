@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import java.util.List;
 
 public interface DepartmentService {
-    void addNewDepartment(Department department);
+    void saveDepartment(Department department);
 
     List<Department> findAllDepartments();
 

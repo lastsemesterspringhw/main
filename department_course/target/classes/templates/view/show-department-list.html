@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/jdbc">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Department's Students </title> <link rel="stylesheet" th:href="@{/bootstrap.min.css}"/>
+    <title>List of Students</title>
+    <style>
+        .custom {
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container">
+        <div class="card mx-auto custom">
+            <h2 class="card-header"> Please choose the department's students by checking them </h2>
+            <div class="card-body">
+                <form th:action = "@{/department/{id}/set_students_to_department(id = ${departmentId})}" th:object = "${departmentStudent}" method="post">
+                <table class="table table-bordered table-inverse table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th> Student ID </th>
+                        <th> First Name </th>
+                        <th> Last Name </th>
+                        <th> Gender </th>
+                        <th> Actions </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each = "student: ${students}">
+                        <td th:text = "${student.id}"></td>
+                        <td th:text = "${student.firstName}"></td>
+                        <td th:text = "${student.lastName}"></td>
+                        <td th:text = "${student.gender}"></td>
+                        <td><input type="checkbox" th:field = "*{studentIds}" th:value="${student.id}" /></td>
+                    </tr>
+                    </tbody>
+                </table>
+                    <input  type="submit" class="btn btn-primary" value="Add Students to Department"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<script th:src = "@{/jquery.min.js}"></script>
+<script th:src = "@{/bootstrap.min.js}"></script>
+</body>
+</html>

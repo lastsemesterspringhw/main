@@ -5,7 +5,7 @@ import homework.department.model.Student;
 import java.util.List;
 
 public interface StudentService {
-    void addNewStudent(Student student);
+    void saveStudent(Student student);
 
     List<Student> findAllStudents();
 
